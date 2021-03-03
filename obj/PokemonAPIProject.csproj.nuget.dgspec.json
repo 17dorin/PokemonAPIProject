@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\17dor\\source\\repos\\PokemonAPIProject\\PokemonAPIProject.csproj": {}
+    "D:\\Grand Circus\\Grand Circus Docs\\APIProject\\PokemonAPIProject\\PokemonAPIProject\\PokemonAPIProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\17dor\\source\\repos\\PokemonAPIProject\\PokemonAPIProject.csproj": {
+    "D:\\Grand Circus\\Grand Circus Docs\\APIProject\\PokemonAPIProject\\PokemonAPIProject\\PokemonAPIProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\17dor\\source\\repos\\PokemonAPIProject\\PokemonAPIProject.csproj",
+        "projectUniqueName": "D:\\Grand Circus\\Grand Circus Docs\\APIProject\\PokemonAPIProject\\PokemonAPIProject\\PokemonAPIProject.csproj",
         "projectName": "PokemonAPIProject",
-        "projectPath": "C:\\Users\\17dor\\source\\repos\\PokemonAPIProject\\PokemonAPIProject.csproj",
-        "packagesPath": "C:\\Users\\17dor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\17dor\\source\\repos\\PokemonAPIProject\\obj\\",
+        "projectPath": "D:\\Grand Circus\\Grand Circus Docs\\APIProject\\PokemonAPIProject\\PokemonAPIProject\\PokemonAPIProject.csproj",
+        "packagesPath": "C:\\Users\\tacol\\.nuget\\packages\\",
+        "outputPath": "D:\\Grand Circus\\Grand Circus Docs\\APIProject\\PokemonAPIProject\\PokemonAPIProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\17dor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tacol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

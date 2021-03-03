@@ -11,16 +11,11 @@ namespace PokemonAPIProject.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+        private PokemonDAL pk = new PokemonDAL();
         public IActionResult Index()
         {
-            return View();
+            PokemonRoot pokemon = pk.GetPokemon("bulbasaur");
+            return View(pokemon);
         }
 
         public IActionResult Privacy()
