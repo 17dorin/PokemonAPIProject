@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace PokemonAPIProject.Models
 {
-    public partial class Pokemon
+    public partial class AspNetUserLogin
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Url { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string ProviderDisplayName { get; set; }
         public string UserId { get; set; }
 
         public virtual AspNetUser User { get; set; }
