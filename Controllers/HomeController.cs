@@ -14,8 +14,13 @@ namespace PokemonAPIProject.Controllers
         private PokemonDAL pk = new PokemonDAL();
         public IActionResult Index()
         {
-            PokemonRoot pokemon = pk.GetPokemon("bulbasaur");
-            return View(pokemon);
+            return View();
+        }
+        public IActionResult SearchByName(string pokemon)
+        {
+            string poke = pokemon.Trim().ToLower();
+            PokemonRoot p = pk.GetPokemon(poke);
+            return View(p);
         }
 
         public IActionResult Privacy()
