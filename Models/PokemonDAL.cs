@@ -51,6 +51,27 @@ namespace PokemonAPIProject.Models
             return json;
         }
 
+        public string GetDexData(string dex)
+        {
+            string url = $@"https://pokeapi.co/api/v2/pokedex/{dex}/";
+
+            HttpWebRequest request = WebRequest.CreateHttp(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            StreamReader rd = new StreamReader(response.GetResponseStream());
+            string json = rd.ReadToEnd();
+
+            return json;
+        }
+
+        public PokedexRoot GetDex(string dex)
+        {
+            string json = GetDexData(dex);
+
+            PokedexRoot p = JsonConvert.DeserializeObject<PokedexRoot>(json);
+            return p;
+        }
+
         public MoveRoot GetMove(string move)
         {
             string json = GetMoveData(move);
