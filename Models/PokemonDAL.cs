@@ -49,9 +49,9 @@ namespace PokemonAPIProject.Models
 
         }
 
-        public PokemonRoot GetPokemon(string name)
+        public PokemonRoot GetPokemon(string pokemon)
         {
-            string json = GetData(name);
+            string json = GetData(pokemon);
 
             PokemonRoot r = JsonConvert.DeserializeObject<PokemonRoot>(json);
             return r;

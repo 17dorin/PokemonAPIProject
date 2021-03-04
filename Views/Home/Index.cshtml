@@ -1,6 +1,15 @@
-﻿@model PokemonRoot
+﻿<h1>Welcome to the Pokemon Deck Keeper!</h1>
+<br/>
+<br />
+<h4>Feel free to browse our site and look at various pokemon by searching for their name, abilities or type!</h4>
+<br />
+<br />
+<h4>If you would like to start your own Pokemon Deck, please  login or register an account! </h4>
+<br />
+<br />
 
-<h2>@Model.name</h2>
-
-<h3>@Model.height</h3>
-<h4>@Model.weight</h4>
+<form asp-action="SearchByName" asp-controller="Home">
+    <label>Search for a Pokemon by name!</label>
+    <input type="text" name="pokemon"/>
+    <input type="submit"/>
+</form>
