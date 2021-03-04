@@ -48,6 +48,13 @@ namespace PokemonAPIProject.Controllers
 
         }
 
+        public IActionResult SearchByDex(string dex)
+        {
+            PokedexRoot p = pk.GetDex(dex);
+
+            return View(p);
+        }
+
         public IActionResult Privacy()
         {
             return View();

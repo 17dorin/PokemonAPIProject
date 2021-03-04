@@ -1,0 +1,11 @@
+﻿@model PokedexRoot
+
+<h2>Pokemon in @Model.name</h2>
+
+<ul>
+    @foreach (Pokemon_Entries p in Model.pokemon_entries)
+    {
+        <li>@p.pokemon_species.name</li>
+    }
+</ul>
+
