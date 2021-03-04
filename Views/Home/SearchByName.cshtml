@@ -1,30 +1,33 @@
 ﻿@model PokemonRoot
 
-<h2>@Model.name</h2>
-<br />
-<img src=@Model.sprites.other.dream_world.front_default />
-<br />
+    <div class="city">
+        <h2>@Model.name</h2>
+        <br />
+        <img src=@Model.sprites.other.dream_world.front_default />
+        <br />
 
-<img src=@Model.sprites.front_default />
-<img src=@Model.sprites.back_default />
-<img src=@Model.sprites.front_shiny />
-<img src=@Model.sprites.back_shiny />
-<img src=@Model.sprites.front_female />
-<img src=@Model.sprites.back_female />
-<img src=@Model.sprites.front_shiny_female />
-<img src=@Model.sprites.back_shiny_female />
-<br />
+        <img src=@Model.sprites.front_default />
+        <img src=@Model.sprites.back_default />
+        <img src=@Model.sprites.front_shiny />
+        <img src=@Model.sprites.back_shiny />
+        <img src=@Model.sprites.front_female />
+        <img src=@Model.sprites.back_female />
+        <img src=@Model.sprites.front_shiny_female />
+        <img src=@Model.sprites.back_shiny_female />
+        <br />
 
-<ul>
-    <h2>Stats</h2>
-    @for (int i = 0; i < 5; i++)
-    {
-        <li>@Model.stats[i].stat.name : @Model.stats[i].base_stat</li>
-    }
-    <li>height: @((double)Model.height/10) meters</li>
-    <li>weight: @((double)Model.weight/10) kg</li>
-</ul>
-<br />
+        <ul>
+            <h2>Stats</h2>
+            @for (int i = 0; i < 5; i++)
+            {
+                <li>@Model.stats[i].stat.name : @Model.stats[i].base_stat</li>
+            }
+            <li>height: @((double)Model.height/10) meters</li>
+            <li>weight: @((double)Model.weight/10) kg</li>
+        </ul>
+        <br />
+    </div>
+
 
 <a asp-action="Add" asp-controller="Favorites" asp-route-pokemon="@Model.name">Add this Pokemon to your Deck! </a>
 

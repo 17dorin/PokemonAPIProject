@@ -2,6 +2,7 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
+    background-color: lightseagreen;
   white-space: normal;
   text-align: center;
   word-break: break-all;
@@ -13,17 +14,26 @@ a {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: lightseagreen;
+    border-color: #1861ac;
 }
-
+.city {
+    background-color: teal;
+    color: aliceblue;
+    border: 4px solid black;
+    margin: 20px;
+    padding: 20px;
+    align-content: center;
+}
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
+  background-color: teal;
   border-color: #1861ac;
 }
-
+.nav{
+    background-color: teal;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -36,14 +46,17 @@ html {
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    background-color: lightseagreen;
+    border-top: 1px solid #e5e5e5;
 }
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    background-color: lightseagreen;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    background-color: lightseagreen;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
@@ -59,8 +72,13 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    background-color: darkslategrey;
+    color: aliceblue;
+    margin: 20px;
+    padding: 20px;
+    align-content: center;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
 .footer {
   position: absolute;
