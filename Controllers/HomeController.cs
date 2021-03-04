@@ -24,47 +24,28 @@ namespace PokemonAPIProject.Controllers
             return View(p);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public IActionResult SearchByType(string type)
         {
             TempData["type"] = type;
             string t = type.Trim().ToLower();
             List<Pokemon> list = pk.GetType(t);
             return View(list);
+        }
+
+        public IActionResult SearchByMove(string move)
+        {
+            //Normalizes search string
+            string search = move.Trim().ToLower();
+
+            //Deserializes move object
+            MoveRoot m = pk.GetMove(search);
+
+            //Storing user input to display in view
+            TempData["moveName"] = move;
+
+            //Passing the list into the view
+            return View(m);
+
         }
 
         public IActionResult Privacy()

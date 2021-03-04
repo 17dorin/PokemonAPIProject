@@ -38,6 +38,28 @@ namespace PokemonAPIProject.Models
 
         }
 
+        public string GetMoveData(string move)
+        {
+            string url = $@"https://pokeapi.co/api/v2/move/{move}/";
+
+            HttpWebRequest request = WebRequest.CreateHttp(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            StreamReader rd = new StreamReader(response.GetResponseStream());
+            string json = rd.ReadToEnd();
+
+            return json;
+        }
+
+        public MoveRoot GetMove(string move)
+        {
+            string json = GetMoveData(move);
+
+            MoveRoot r = JsonConvert.DeserializeObject<MoveRoot>(json);
+            return r;
+        }
+
+
         public PokemonRoot GetPokemon(string pokemon)
         {
             string json = GetData(pokemon);
@@ -46,72 +68,6 @@ namespace PokemonAPIProject.Models
             return r;
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         public string TypeData(string name)
@@ -139,5 +95,6 @@ namespace PokemonAPIProject.Models
             return pokemonList;
 
         }
+
     }
 }
