@@ -1,0 +1,16 @@
+﻿@model List<Pokemon>
+
+<h2>All Pokemon with the @TempData.Peek("type") type!</h2>
+
+<ul>
+    @foreach (Pokemon p in Model)
+    {
+    <li>@p.pokemon.name
+        <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.pokemon.name">
+            <button>
+                See More!
+            </button>
+        </a>
+    </li>
+    }
+</ul>

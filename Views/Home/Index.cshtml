@@ -1,5 +1,5 @@
 ﻿<h1>Welcome to the Pokemon Deck Keeper!</h1>
-<br/>
+<br />
 <br />
 <h4>Feel free to browse our site and look at various pokemon by searching for their name, abilities or type!</h4>
 <br />
@@ -10,6 +10,12 @@
 
 <form asp-action="SearchByName" asp-controller="Home">
     <label>Search for a Pokemon by name!</label>
-    <input type="text" name="pokemon"/>
-    <input type="submit"/>
+    <input type="text" name="pokemon" />
+    <input type="submit" />
+</form>
+
+<form asp-action="SearchByType" asp-controller="Home">
+<label>Search for Pokemon by Type!</label>
+<input type="text" name="type" />
+<input type="submit" />
 </form>

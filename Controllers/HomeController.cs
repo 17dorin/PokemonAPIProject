@@ -14,6 +14,7 @@ namespace PokemonAPIProject.Controllers
         private PokemonDAL pk = new PokemonDAL();
         public IActionResult Index()
         {
+            TempData.Remove("type");
             return View();
         }
         public IActionResult SearchByName(string pokemon)
@@ -21,6 +22,13 @@ namespace PokemonAPIProject.Controllers
             string poke = pokemon.Trim().ToLower();
             PokemonRoot p = pk.GetPokemon(poke);
             return View(p);
+        }
+        public IActionResult SearchByType(string type)
+        {
+            TempData["type"] = type;
+            string t = type.Trim().ToLower();
+            List<Pokemon> list = pk.GetPokemonType(t);
+            return View(list);
         }
 
         public IActionResult Privacy()

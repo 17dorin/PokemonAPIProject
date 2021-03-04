@@ -24,7 +24,7 @@ namespace PokemonAPIProject.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
-        public virtual DbSet<Pokemon> Pokemons { get; set; }
+        public virtual DbSet<FavPokemon> Pokemons { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -134,7 +134,7 @@ namespace PokemonAPIProject.Models
                     .HasForeignKey(d => d.UserId);
             });
 
-            modelBuilder.Entity<Pokemon>(entity =>
+            modelBuilder.Entity<FavPokemon>(entity =>
             {
                 entity.ToTable("Pokemon");
 
