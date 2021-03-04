@@ -26,6 +26,12 @@ namespace PokemonAPIProject.Controllers
             return View(_PokemonDB.Pokemons.Where(x => x.UserId == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToList());
         }
 
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult Add(Pokemon pokemon)
         {
             pokemon.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -40,6 +46,7 @@ namespace PokemonAPIProject.Controllers
             return View(pokemon);
         }
 
+        [HttpPost]
         public IActionResult Delete(Pokemon pokemon)
         {
             if (ModelState.IsValid)
@@ -47,7 +54,6 @@ namespace PokemonAPIProject.Controllers
                 _PokemonDB.Pokemons.Remove(pokemon);
                 _PokemonDB.SaveChanges();
 
-                // Possibly add a success page?
                 return RedirectToAction("Index");
             }
             else
