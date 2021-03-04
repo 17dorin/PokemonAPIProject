@@ -10,6 +10,7 @@
     <li>Weight: @((double)Model.weight/10) kg</li>
     <li>Order: @Model.order</li>
 </ul>
+
 <br />
 <img src=@Model.sprites.front_default />
 <img src=@Model.sprites.back_default />
@@ -20,5 +21,7 @@
 <img src=@Model.sprites.front_shiny_female />
 <img src=@Model.sprites.back_shiny_female />
 <br />
-<a asp-action="Add" asp-controller="Favorites">Add this Pokemon to your Deck! </a>
+
+<a asp-action="Add" asp-controller="Favorites" asp-route-pokemon="@Model.name">Add this Pokemon to your Deck! </a>
+
 
