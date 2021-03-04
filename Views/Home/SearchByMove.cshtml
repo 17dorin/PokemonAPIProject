@@ -1,8 +1,8 @@
-﻿@model MoveRoot
+﻿@model List<Learned_By_Pokemon>
 
-<h2>Pokemon that can learn @TempData["moveName"]:</h2>
+<h2>Pokemon that can learn @TempData.Peek("moveName"):</h2>
 <ul>
-    @foreach (Learned_By_Pokemon p in Model.learned_by_pokemon)
+    @foreach(Learned_By_Pokemon p in Model)
     {
         <li>@p.name</li>
         <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
@@ -11,4 +11,15 @@
             </button>
         </a>
     }
+</ul>
+
+<ul class="pagination">
+    @if (int.Parse(TempData.Peek("pageNumber").ToString()) != 1)
+    {
+    <li><a asp-action="SearchByMove" asp-controller="Home" asp-route-move="@TempData["moveName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) - 1)">[Previous]</a></li>
+    }
+<li>
+    <a asp-action="SearchByMove" asp-controller="Home" asp-route-move="@TempData["moveName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) + 1)">[Next]</a>
+</li>
+    
 </ul>

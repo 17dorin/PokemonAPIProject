@@ -15,6 +15,25 @@
 <img src=@Model.sprites.back_shiny_female />
 <br />
 
+<label for="base-moves">Moves learned at level 1:</label>
+<ul id="base-moves">
+    @foreach (Move m in Model.moves)
+    {
+        bool baseMove = false;
+        foreach (Version_Group_Details v in m.version_group_details)
+        {
+            if (v.level_learned_at == 1)
+            {
+                baseMove = true;
+            }
+        }
+
+        if (baseMove)
+        {
+            <li>@m.move.name</li>
+        }
+    }
+</ul>
 <ul>
     <h2>Stats</h2>
     @for (int i = 0; i < 5; i++)
@@ -26,9 +45,3 @@
 </ul>
 <br />
 <a asp-action="Add" asp-controller="Favorites" asp-route-pokemon="@Model.name">Add this Pokemon to your Deck! </a>
-    
-
-
-
-
-
