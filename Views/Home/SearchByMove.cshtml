@@ -1,0 +1,9 @@
+﻿@model List<PokemonRoot>
+
+<h2>Pokemon that can learn @TempData["moveName"]:</h2>
+<ul>
+    @foreach(PokemonRoot p in Model)
+    {
+        <li>@p.name</li>
+    }
+</ul>
