@@ -32,7 +32,7 @@ namespace PokemonAPIProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Pokemon pokemon)
+        public IActionResult Add(FavPokemon pokemon)
         {
             pokemon.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             _PokemonDB.Pokemons.Add(pokemon);
@@ -42,12 +42,12 @@ namespace PokemonAPIProject.Controllers
 
         public IActionResult Delete(int id)
         {
-            Pokemon pokemon = _PokemonDB.Pokemons.Find(id);
+            FavPokemon pokemon = _PokemonDB.Pokemons.Find(id);
             return View(pokemon);
         }
 
         [HttpPost]
-        public IActionResult Delete(Pokemon pokemon)
+        public IActionResult Delete(FavPokemon pokemon)
         {
             if (ModelState.IsValid)
             {

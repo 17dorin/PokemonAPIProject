@@ -1,4 +1,4 @@
-﻿@model List<Pokemon>
+﻿@model List<FavPokemon>
 
 @if (Model.Count == 0)
 {
@@ -7,7 +7,7 @@
 else
 {
     <h2>Viewing your favorite Pokemon:</h2>
-    @foreach (Pokemon p in Model)
+    @foreach (FavPokemon p in Model)
     {
         <h3>Name: @p.Name</h3>
         <h3>URL: @p.Url</h3>

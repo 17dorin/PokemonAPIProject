@@ -12,9 +12,9 @@ namespace PokemonAPIProject.Models
         public string name { get; set; }
         public Damage_Relations damage_relations { get; set; }
         public Game_Indices_Type[] game_indices { get; set; }
-        public Generation generation { get; set; }
+        public Generation_Type generation { get; set; }
         public Move_Damage_Class move_damage_class { get; set; }
-        public Name[] names { get; set; }
+        public Name_Type[] names { get; set; }
         public List<Pokemon> pokemon { get; set; }
         public Move_Type[] moves { get; set; }
     }
@@ -65,7 +65,7 @@ namespace PokemonAPIProject.Models
         public string url { get; set; }
     }
 
-    public class Generation
+    public class Generation_Type
     {
         public string name { get; set; }
         public string url { get; set; }
@@ -89,13 +89,13 @@ namespace PokemonAPIProject.Models
         public string url { get; set; }
     }
 
-    public class Name
+    public class Name_Type
     {
         public string name { get; set; }
-        public Language language { get; set; }
+        public Language_Type language { get; set; }
     }
 
-    public class Language
+    public class Language_Type
     {
         public string name { get; set; }
         public string url { get; set; }

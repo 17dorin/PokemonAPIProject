@@ -136,7 +136,7 @@ namespace PokemonAPIProject.Models
 
             modelBuilder.Entity<FavPokemon>(entity =>
             {
-                entity.ToTable("Pokemon");
+                entity.ToTable("FavPokemon");
 
                 entity.Property(e => e.Name).HasMaxLength(25);
 
