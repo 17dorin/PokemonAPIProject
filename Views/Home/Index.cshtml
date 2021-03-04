@@ -1,4 +1,4 @@
-﻿<h1>Welcome to the Pokemon Deck Keeper!</h1>
+<h1>Welcome to the Pokemon Deck Keeper!</h1>
 <br />
 <br />
 <h4>Feel free to browse our site and look at various pokemon by searching for their name, abilities or type!</h4>
@@ -16,9 +16,9 @@
 <br />
 
 <form asp-action="SearchByType" asp-controller="Home">
-<label>Search for Pokemon by Type!</label>
-<input type="text" name="type" />
-<input type="submit" />
+  <label>Search for Pokemon by Type!</label>
+  <input type="text" name="type" />
+  <input type="submit" />
 </form>
 <br />
 
@@ -27,6 +27,7 @@
     <input type="text" name="move" />
     <input type="submit" />
 </form>
+<br />
 
 <form asp-action="SearchByDex" asp-controller="Home">
     <label for="dex">Search by Pokedex Version</label>
@@ -61,6 +62,7 @@
     </select>
     <input type="submit" />
 </form>
+<br />
 
 <form asp-action="SearchByHabitat" asp-controller="Home">
     <label for="habitat">Search by habitat</label>
@@ -77,3 +79,4 @@
     </select>
     <input type="submit" />
 </form>
+

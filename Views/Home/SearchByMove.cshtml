@@ -5,6 +5,11 @@
     @foreach(Learned_By_Pokemon p in Model)
     {
         <li>@p.name</li>
+        <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
+            <button>
+                See More!
+            </button>
+        </a>
     }
 </ul>
 

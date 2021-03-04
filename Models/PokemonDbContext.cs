@@ -24,7 +24,7 @@ namespace PokemonAPIProject.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
-        public virtual DbSet<FavPokemon> Pokemons { get; set; }
+        public virtual DbSet<FavPokemon> FavPokemons { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -138,16 +138,22 @@ namespace PokemonAPIProject.Models
             {
                 entity.ToTable("FavPokemon");
 
+                entity.Property(e => e.Image).HasMaxLength(200);
+
                 entity.Property(e => e.Name).HasMaxLength(25);
 
-                entity.Property(e => e.Url).HasMaxLength(40);
+                entity.Property(e => e.Type1).HasMaxLength(30);
+
+                entity.Property(e => e.Type2).HasMaxLength(30);
+
+                entity.Property(e => e.Url).HasMaxLength(200);
 
                 entity.Property(e => e.UserId).HasMaxLength(450);
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Pokemons)
+                    .WithMany(p => p.FavPokemons)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Pokemon__UserId__5CD6CB2B");
+                    .HasConstraintName("FK__Pokemon__UserId__4BAC3F29");
             });
 
             OnModelCreatingPartial(modelBuilder);
