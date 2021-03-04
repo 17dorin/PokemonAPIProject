@@ -54,7 +54,7 @@ namespace PokemonAPIProject.Models
 
 
 
-        public string GetType(string name)
+        public string TypeData(string name)
         {
             //URL can be different based upon endpoint/API 
             string url = $"https://pokeapi.co/api/v2/type/{name}/";
@@ -70,9 +70,9 @@ namespace PokemonAPIProject.Models
 
         }
 
-        public List<Pokemon> GetPokemonType(string type)
+        public List<Pokemon> GetType(string type)
         {
-            string json = GetType(type);
+            string json = TypeData(type);
 
             TypeRoot r = JsonConvert.DeserializeObject<TypeRoot>(json);
             List<Pokemon> pokemonList = r.pokemon;

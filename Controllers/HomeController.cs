@@ -27,7 +27,7 @@ namespace PokemonAPIProject.Controllers
         {
             TempData["type"] = type;
             string t = type.Trim().ToLower();
-            List<Pokemon> list = pk.GetPokemonType(t);
+            List<Pokemon> list = pk.GetType(t);
             return View(list);
         }
 
