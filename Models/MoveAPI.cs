@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace PokemonAPIProject.Models
@@ -13,6 +14,7 @@ namespace PokemonAPIProject.Models
         public Contest_Effect contest_effect { get; set; }
         public Contest_Type contest_type { get; set; }
         public Damage_Class damage_class { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public int effect_chance { get; set; }
         public object[] effect_changes { get; set; }
         public Effect_Entries[] effect_entries { get; set; }

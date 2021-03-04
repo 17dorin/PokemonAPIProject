@@ -34,18 +34,8 @@ namespace PokemonAPIProject.Controllers
             //Storing user input to display in view
             TempData["moveName"] = move;
 
-            List<PokemonRoot> pokemonByMove = new List<PokemonRoot>();
-
-            //Move objects have an array of pokemon that can learn the move, represented by a name string and a url string
-            foreach(Learned_By_Pokemon l in m.learned_by_pokemon)
-            {
-                //Uses each name in the GetPokemon method to deserialize into a PokemonRoot, adding them to a list
-                PokemonRoot p = pk.GetPokemon(l.name);
-                pokemonByMove.Add(p);
-            }
-
             //Passing the list into the view
-            return View(pokemonByMove);
+            return View(m);
         }
 
         public IActionResult Privacy()
