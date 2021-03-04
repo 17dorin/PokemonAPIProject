@@ -1,0 +1,9 @@
+﻿@model HabitatRoot
+
+<h2>Pokemon that reside in @TempData["habitatName"]:</h2>
+<ul>
+    @foreach (Pokemon_Species p in Model.pokemon_species)
+    {
+        <li>@p.name</li>
+    }
+</ul>

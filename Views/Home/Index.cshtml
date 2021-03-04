@@ -1,4 +1,4 @@
-﻿<h1>Welcome to the Pokemon Deck Keeper!</h1>
+<h1>Welcome to the Pokemon Deck Keeper!</h1>
 <br />
 <br />
 <h4>Feel free to browse our site and look at various pokemon by searching for their name, abilities or type!</h4>
@@ -16,15 +16,65 @@
 <br />
 
 <form asp-action="SearchByType" asp-controller="Home">
-<label>Search for Pokemon by Type!</label>
-<input type="text" name="type" />
-<input type="submit" />
+  <label>Search for Pokemon by Type!</label>
+  <input type="text" name="type" />
+  <input type="submit" />
 </form>
 <br />
 
 <form asp-action="SearchByMove" asp-controller="Home">
     <label for="move">Search by move</label>
     <input type="text" name="move" />
+    <input type="submit" />
+</form>
+
+<form asp-action="SearchByDex" asp-controller="Home">
+    <label for="dex">Search by Pokedex Version</label>
+    <select name="dex" id="dex">
+        <option value="national">National</option>
+        <option value="kanto">Kanto</option>
+        <option value="updated-kanto">Updated Kanto</option>
+        <option value="original-johto">Original Johto</option>
+        <option value="updated-johto">Updated Johto</option>
+        <option value="hoenn">Hoenn</option>
+        <option value="updated-hoenn">Updated Hoenn</option>
+        <option value="original-sinnoh">Original Sinnoh</option>
+        <option value="extended-sinnoh">Extended Sinnoh</option>
+        <option value="original-unova">Original Unova</option>
+        <option value="updated-unova">Updated Unova</option>
+        <option value="kalos-central">Central Kalos</option>
+        <option value="kalos-coastal">Coastal Kalos</option>
+        <option value="kalos-mountain">Mountain Kalos</option>
+        <option value="original-alola">Original Alola</option>
+        <option value="original-melemele">Original Melemele</option>
+        <option value="original-akala">Original Akala</option>
+        <option value="original-ulaula">Original Ulaula</option>
+        <option value="original-poni">Original Poni</option>
+        <option value="updated-alola">Updated Alola</option>
+        <option value="updated-melemele">Updated Melemele</option>
+        <option value="updated-akala">Updated Akala</option>
+        <option value="updated-ulaula">Updated Ulaula</option>
+        <option value="updated-poni">Updated Poni</option>
+        <option value="galar">Galar</option>
+        <option value="isle-of-armor">Isle of Armor</option>
+        <option value="crown-tundra">Crown Tundra</option>
+    </select>
+    <input type="submit" />
+</form>
+
+<form asp-action="SearchByHabitat" asp-controller="Home">
+    <label for="habitat">Search by habitat</label>
+    <select name="habitat" id="habitat">
+        <option value="cave">Cave</option>
+        <option value="forest">Forest</option>
+        <option value="grassland">Grassland</option>
+        <option value="mountain">Mountain</option>
+        <option value="rare">Rare</option>
+        <option value="rough-terrain">Rough Terrain</option>
+        <option value="sea">Sea</option>
+        <option value="urban">Urban</option>
+        <option value="waters-edge">Water's Edge</option>
+    </select>
     <input type="submit" />
 </form>
 
