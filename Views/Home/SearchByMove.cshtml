@@ -2,8 +2,13 @@
 
 <h2>Pokemon that can learn @TempData["moveName"]:</h2>
 <ul>
-    @foreach(Learned_By_Pokemon p in Model.learned_by_pokemon)
+    @foreach (Learned_By_Pokemon p in Model.learned_by_pokemon)
     {
         <li>@p.name</li>
+        <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
+            <button>
+                See More!
+            </button>
+        </a>
     }
 </ul>
