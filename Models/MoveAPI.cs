@@ -9,13 +9,12 @@ namespace PokemonAPIProject.Models
 
     public class MoveRoot
     {
-        public int accuracy { get; set; }
+        public string accuracy { get; set; }
         public Contest_Combos contest_combos { get; set; }
         public Contest_Effect contest_effect { get; set; }
         public Contest_Type contest_type { get; set; }
         public Damage_Class damage_class { get; set; }
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public int effect_chance { get; set; }
+        public string effect_chance { get; set; }
         public object[] effect_changes { get; set; }
         public Effect_Entries[] effect_entries { get; set; }
         public Flavor_Text_Entries[] flavor_text_entries { get; set; }
