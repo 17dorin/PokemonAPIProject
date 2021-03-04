@@ -32,7 +32,7 @@ namespace PokemonAPIProject.Controllers
             return View(list);
         }
 
-        public IActionResult SearchByMove(string move)
+        public IActionResult SearchByMove(string move, [FromQuery]int pageNumber = 1, [FromQuery]int pageSize = 10)
         {
             //Normalizes search string
             string search = move.Trim().ToLower();
@@ -40,12 +40,15 @@ namespace PokemonAPIProject.Controllers
             //Deserializes move object
             MoveRoot m = pk.GetMove(search);
 
-            //Storing user input to display in view
             TempData["moveName"] = move;
 
-            //Passing the list into the view
-            return View(m);
+            List<Learned_By_Pokemon> pokemonByUrl = new List<Learned_By_Pokemon>();
+            pokemonByUrl = m.learned_by_pokemon.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
 
+            TempData["pageNumber"] = pageNumber;
+
+            //Passing the list into the view
+            return View(pokemonByUrl);
         }
 
         public IActionResult SearchByDex(string dex)
