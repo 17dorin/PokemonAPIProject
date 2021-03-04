@@ -117,5 +117,27 @@ namespace PokemonAPIProject.Models
 
         }
 
+        public string GetHabitatData(string habitat)
+        {
+            string url = $"https://pokeapi.co/api/v2/pokemon-habitat/{habitat}";
+
+            HttpWebRequest request = WebRequest.CreateHttp(url);
+            HttpWebResponse response = null;
+
+            response = (HttpWebResponse)request.GetResponse();
+            StreamReader rd = new StreamReader(response.GetResponseStream());
+            string json = rd.ReadToEnd();
+            return json;
+        }
+
+        public HabitatRoot GetHabitat(string habitat)
+        {
+            string json = GetHabitatData(habitat);
+
+            HabitatRoot h = JsonConvert.DeserializeObject<HabitatRoot>(json);
+            return h;
+        }
+
+
     }
 }

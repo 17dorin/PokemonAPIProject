@@ -55,6 +55,21 @@ namespace PokemonAPIProject.Controllers
             return View(p);
         }
 
+        public IActionResult SearchByHabitat(string habitat)
+        {
+            //Normalizes search string
+            string search = habitat.Trim().ToLower();
+
+            //Deserializes move object
+            HabitatRoot h = pk.GetHabitat(habitat);
+
+            //Storing user input to display in view
+            TempData["habitatName"] = habitat;
+
+            //Passing the list into the view
+            return View(h);
+        }
+
         public IActionResult Privacy()
         {
             return View();
