@@ -23,6 +23,42 @@ namespace PokemonAPIProject.Controllers
             PokemonRoot p = pk.GetPokemon(poke);
             return View(p);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public IActionResult SearchByType(string type)
         {
             TempData["type"] = type;

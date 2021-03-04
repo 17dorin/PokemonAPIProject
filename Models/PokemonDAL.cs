@@ -54,6 +54,66 @@ namespace PokemonAPIProject.Models
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public string TypeData(string name)
         {
             //URL can be different based upon endpoint/API 
