@@ -11,7 +11,7 @@ using System.Security.Claims;
 
 namespace PokemonAPIProject.Controllers
 
-{
+{ [Authorize]
     public class FavoritesController : Controller
     {
         private readonly PokemonDbContext _PokemonDB;
@@ -60,8 +60,6 @@ namespace PokemonAPIProject.Controllers
             {
                 return View();
             }
-
         }
-
     }
 }
