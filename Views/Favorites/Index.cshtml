@@ -1,0 +1,9 @@
+﻿@model List<Pokemon> 
+
+<h2>Viewing your favorite Pokemon:</h2>
+@foreach(Pokemon p in Model)
+{
+    <h3>Name: @p.Name</h3>
+    <h3>URL: @p.Url</h3>
+    <h3>UserId: @p.UserId</h3>
+}
