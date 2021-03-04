@@ -23,6 +23,21 @@ namespace PokemonAPIProject.Controllers
             return View(p);
         }
 
+        public IActionResult SearchByMove(string move)
+        {
+            //Normalizes search string
+            string search = move.Trim().ToLower();
+
+            //Deserializes move object
+            MoveRoot m = pk.GetMove(search);
+
+            //Storing user input to display in view
+            TempData["moveName"] = move;
+
+            //Passing the list into the view
+            return View(m);
+        }
+
         public IActionResult Privacy()
         {
             return View();
