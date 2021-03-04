@@ -57,9 +57,6 @@ namespace PokemonAPIProject.Controllers
 
         public IActionResult SearchByHabitat(string habitat)
         {
-            //Normalizes search string
-            string search = habitat.Trim().ToLower();
-
             //Deserializes move object
             HabitatRoot h = pk.GetHabitat(habitat);
 
