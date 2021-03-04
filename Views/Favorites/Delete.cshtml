@@ -1,0 +1,15 @@
+﻿@model Pokemon
+
+<form asp-action="Delete" asp-controller="Favorites" method="post">
+    <p>
+    <h2>Are you sure you want to remove @Model.Name from your favorites?</h2>
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.Name)
+            @Html.HiddenFor(x => x.Url)
+            @Html.HiddenFor(x => x.UserId)
+            <button>
+                Remove
+            </button>
+        </a>
+    </p>
+</form>
