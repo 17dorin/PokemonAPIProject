@@ -9,9 +9,11 @@ else
     <h2>Viewing your favorite Pokemon:</h2>
     @foreach (FavPokemon p in Model)
     {
-        <h3>Name: @p.Name</h3>
-        <h3>URL: @p.Url</h3>
-        <h3>UserId: @p.UserId</h3>
+        <img src=@p.Image />
+        <p>Name: @p.Name</p>
+        <p>Type(s): @p.Type1@p.Type2</p>
+        <br />
         <a asp-action="Delete" asp-controller="Favorites" asp-route-id="@p.Id"><button>Remove Favorite</button></a>
+        <hr />
     }
 }

@@ -138,7 +138,13 @@ namespace PokemonAPIProject.Models
             {
                 entity.ToTable("FavPokemon");
 
+                entity.Property(e => e.Image).HasMaxLength(200);
+
                 entity.Property(e => e.Name).HasMaxLength(25);
+
+                entity.Property(e => e.Type1).HasMaxLength(30);
+
+                entity.Property(e => e.Type2).HasMaxLength(30);
 
                 entity.Property(e => e.Url).HasMaxLength(200);
 

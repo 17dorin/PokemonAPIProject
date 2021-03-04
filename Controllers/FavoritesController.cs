@@ -38,6 +38,19 @@ namespace PokemonAPIProject.Controllers
             PokemonRoot p = pk.GetPokemon(poke);//Allows addition of other properties to the SQL table
 
             FavPokemon favPokemon = new FavPokemon();
+
+            favPokemon.Image = p.sprites.front_default;
+
+            favPokemon.Type1 = p.types[0].type.name;
+            if (p.types.Length < 2)
+            {
+                favPokemon.Type2 = "";
+            }
+            else
+            {
+                favPokemon.Type2 =", " + p.types[1].type.name;
+            }
+
             string url = $@"https://pokeapi.co/api/v2/pokemon/{pokemon}/";
             favPokemon.Name = pokemon;
             favPokemon.Url = url;
@@ -45,6 +58,7 @@ namespace PokemonAPIProject.Controllers
             favPokemon.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             _PokemonDB.FavPokemons.Add(favPokemon);
             _PokemonDB.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

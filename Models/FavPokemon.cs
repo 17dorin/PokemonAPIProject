@@ -11,6 +11,9 @@ namespace PokemonAPIProject.Models
         public string Name { get; set; }
         public string Url { get; set; }
         public string UserId { get; set; }
+        public string Image { get; set; }
+        public string Type1 { get; set; }
+        public string Type2 { get; set; }
 
         public virtual AspNetUser User { get; set; }
     }
