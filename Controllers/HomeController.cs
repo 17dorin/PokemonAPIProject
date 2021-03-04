@@ -15,6 +15,7 @@ namespace PokemonAPIProject.Controllers
         public IActionResult Index()
         {
             TempData.Remove("type");
+            TempData.Remove("error");
             return View();
         }
         public IActionResult SearchByName(string pokemon)
