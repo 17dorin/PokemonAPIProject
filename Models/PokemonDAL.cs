@@ -36,17 +36,6 @@ namespace PokemonAPIProject.Models
             string json = rd.ReadToEnd();
             return json;
 
-            //else
-            //{
-            //    throw new Exception("Error: Subreddit Names must be between 3 to 21 characters");
-            //}
-
-            //catch (Exception e)
-            //{
-            //    return "Error:" + e.StackTrace;
-            //}
-
-
         }
 
         public string GetMoveData(string move)
@@ -77,6 +66,33 @@ namespace PokemonAPIProject.Models
 
             PokemonRoot r = JsonConvert.DeserializeObject<PokemonRoot>(json);
             return r;
+
+        }
+
+
+        public string TypeData(string name)
+        {
+            //URL can be different based upon endpoint/API 
+            string url = $"https://pokeapi.co/api/v2/type/{name}/";
+
+            //Web Requests sometimes need Headers/User Agent prop
+            HttpWebRequest request = WebRequest.CreateHttp(url);
+            HttpWebResponse response = null;
+
+            response = (HttpWebResponse)request.GetResponse();
+            StreamReader rd = new StreamReader(response.GetResponseStream());
+            string json = rd.ReadToEnd();
+            return json;
+
+        }
+
+        public List<Pokemon> GetType(string type)
+        {
+            string json = TypeData(type);
+
+            TypeRoot r = JsonConvert.DeserializeObject<TypeRoot>(json);
+            List<Pokemon> pokemonList = r.pokemon;
+            return pokemonList;
 
         }
 
