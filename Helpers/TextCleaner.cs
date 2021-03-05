@@ -39,6 +39,10 @@ namespace PokemonAPIProject.Helpers
 
         public static string NormalInput(string raw)
         {
+            if(string.IsNullOrEmpty(raw))
+            {
+                return null;
+            }    
             return raw.Trim().ToLower().Replace(' ', '-');
         }
     }
