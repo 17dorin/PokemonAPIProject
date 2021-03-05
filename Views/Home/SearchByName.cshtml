@@ -59,7 +59,29 @@
             <td>weight: @((double)Model.weight/10) kg</td>
         </tr>
     </table>
-    <br />
+</div>
+
+<div class="city">
+    <table id="abilities" align="center">
+        <tr>
+            <h2 align="center">Abilities</h2>
+        </tr>
+        @if (Model.abilities.Count() != 0)
+        {
+            for (int i = 0; i < Model.abilities.Length; i++)
+            {
+                <tr>
+                    <td>@Model.abilities[i].ability.name</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>No ability data to display.</td>
+            </tr>
+        }
+    </table>
 </div>
 
 <div class="city">
