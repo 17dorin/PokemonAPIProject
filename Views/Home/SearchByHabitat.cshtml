@@ -5,12 +5,11 @@
 <ul>
     @foreach (Pokemon_Species p in Model)
     {
-        <li>@TextCleaner.Clean(p.name)</li>
+        <li>
         <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
-            <button>
-                See More!
-            </button>
+            @TextCleaner.Clean(p.name)
         </a>
+        </li>
     }
 </ul>
 

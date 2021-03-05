@@ -1,7 +1,7 @@
 ﻿@model List<FavPokemon>
 @using PokemonAPIProject.Helpers; 
 
-<h3 style="color: red"><strong>@TempData.Peek("error")</strong></h3>
+<h3 style="color: red"><strong>@TempData.Peek("faverror")</strong></h3>
 
 @if (Model.Count == 0)
 {

@@ -24,6 +24,8 @@ namespace PokemonAPIProject.Controllers
 
         public IActionResult Index()
         {
+            TempData.Remove("error");
+            TempData.Remove("moveerror");
             return View(_PokemonDB.FavPokemons.Where(x => x.UserId == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToList());
         }
 
@@ -58,7 +60,7 @@ namespace PokemonAPIProject.Controllers
 
             if (favPokeList.Any(x => pokemon == x.Name))
             {
-                TempData["error"] = "This pokemon is already in your favorites";
+                TempData["faverror"] = "This pokemon is already in your favorites";
                 return RedirectToAction("Index");
             }
             else
@@ -67,7 +69,7 @@ namespace PokemonAPIProject.Controllers
                 favPokemon.Url = url;
                 favPokemon.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-                TempData.Remove("error");
+                TempData.Remove("faverror");
                 _PokemonDB.FavPokemons.Add(favPokemon);
                 _PokemonDB.SaveChanges();
 
