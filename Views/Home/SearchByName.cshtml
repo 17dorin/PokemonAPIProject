@@ -119,7 +119,10 @@
     </table>
 </div>
     <br />
-    <button class="center">
-        <a asp-action="Add" asp-controller="Favorites" asp-route-pokemon="@Model.name">Add this Pokemon to your Deck! </a>
-    </button>
+    <form asp-action="Add" asp-controller="Favorites" asp-route-pokemon="@Model.name">
+            <button class="center; button">
+                Add this Pokemon to your Deck!
+            </button>
+    </form>
+
 

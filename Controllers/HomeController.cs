@@ -15,18 +15,33 @@ namespace PokemonAPIProject.Controllers
         public IActionResult Index()
         {
             TempData.Remove("type");
-            TempData.Remove("error");
+            TempData.Remove("faverror");
             return View();
         }
         public IActionResult SearchByName(string pokemon)
         {
+            PokemonRoot p = new PokemonRoot();
             string poke = pokemon.Trim().ToLower();
-            PokemonRoot p = pk.GetPokemon(poke);
+            try
+            {
+                p = pk.GetPokemon(poke);
+            }
+            catch(Exception e)
+            {
+                TempData["error"] = "Please enter a valid entry";
+                return RedirectToAction("Index");
+            }
+
+            TempData.Remove("moveerror");
+            TempData.Remove("error");
             return View(p);
         }
 
         public IActionResult SearchByType(string type, [FromQuery]int pageNumber = 1, [FromQuery]int pageSize = 10)
         {
+            TempData.Remove("error");
+            TempData.Remove("moveerror");
+
             string t = type.Trim().ToLower();
             TempData["typeName"] = t;
             List<Pokemon> pokemon = pk.GetType(t);
@@ -46,7 +61,16 @@ namespace PokemonAPIProject.Controllers
             TempData["moveName"] = search;
 
             //Deserializes move object
-            MoveRoot m = pk.GetMove(search);
+            MoveRoot m = new MoveRoot();
+            try
+            {
+                m = pk.GetMove(search);
+            }
+            catch (Exception e)
+            {
+                TempData["moveerror"] = "Please enter a valid entry";
+                return RedirectToAction("Index");
+            }
 
             List<Learned_By_Pokemon> pokemonByUrl = new List<Learned_By_Pokemon>();
             pokemonByUrl = m.learned_by_pokemon.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
@@ -54,12 +78,17 @@ namespace PokemonAPIProject.Controllers
             TempData["pageNumber"] = pageNumber;
             TempData["pageSize"] = pageSize;
 
+            TempData.Remove("error");
+            TempData.Remove("moveerror");
+
             //Passing the list into the view
             return View(pokemonByUrl);
         }
 
         public IActionResult SearchByDex(string dex, [FromQuery]int pageNumber = 1, [FromQuery]int pageSize = 10)
         {
+            TempData.Remove("error");
+            TempData.Remove("moveerror");
             PokedexRoot p = pk.GetDex(dex);
             TempData["dexName"] = dex;
 
@@ -74,6 +103,8 @@ namespace PokemonAPIProject.Controllers
 
         public IActionResult SearchByHabitat(string habitat, [FromQuery]int pageNumber = 1, [FromQuery]int pageSize = 10)
         {
+            TempData.Remove("error");
+            TempData.Remove("moveerror");
             //Deserializes move object
             HabitatRoot h = pk.GetHabitat(habitat);
 

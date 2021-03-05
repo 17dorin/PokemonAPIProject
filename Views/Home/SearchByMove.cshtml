@@ -1,19 +1,18 @@
 ﻿@model List<Learned_By_Pokemon>
 
 <h2>Pokemon that can learn @TempData.Peek("moveName"):</h2>
-<ul>
+<ul style=" list-style-position: inside; display: inline-block; text-align: left;">
     @foreach(Learned_By_Pokemon p in Model)
     {
-        <li>@p.name</li>
-        <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
-            <button>
-                See More!
-            </button>
-        </a>
+        <li>
+            <a  asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
+                @p.name
+            </a>
+        </li>
     }
 </ul>
 
-<ul class="pagination">
+<ul>
     @if (int.Parse(TempData.Peek("pageNumber").ToString()) != 1)
     {
         <li>

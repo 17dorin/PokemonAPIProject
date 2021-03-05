@@ -10,6 +10,7 @@
     <br />
 
     <div class="city">
+        <p><strong>@TempData.Peek("error")</strong></p>
         <form align="center" asp-action="SearchByName" asp-controller="Home">
             <label>Search for a Pokemon by Name!</label>
             <input type="text" name="pokemon" />
@@ -40,8 +41,6 @@
                 <option value="dragon">Dragon</option>
                 <option value="dark">Dark</option>
                 <option value="fairy">Fairy</option>
-                <option value="unknown">Unknown</option>
-                <option value="shadow">Shadow</option>
             </select>
             <input type="submit" />
         </form>
@@ -49,6 +48,7 @@
     </div>
  
     <div class="city">
+        <p><strong>@TempData.Peek("moveerror")</strong></p>
         <form align="center" asp-action="SearchByMove" asp-controller="Home">
             <label for="move">Search by Move!</label>
             <input type="text" name="move" />
