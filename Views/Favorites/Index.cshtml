@@ -1,20 +1,30 @@
 ﻿@model List<FavPokemon>
-<body>
-    @if (Model.Count == 0)
+
+<h3 style="color: red"><strong>@TempData.Peek("error")</strong></h3>
+
+@if (Model.Count == 0)
+{
+    <p>You don't currently have any Pokemon added to your favorites.</p>
+}
+else
+{
+    <h2>Viewing your favorite Pokemon:</h2>
+    @foreach (FavPokemon p in Model)
     {
-        <p>You don't currently have any Pokemon added to your favorites.</p>
+        <img src=@p.Image />
+        <p>Name: @p.Name</p>
+        <p>Type(s): @p.Type1@p.Type2</p>
+        <br />
+        <a asp-action="Delete" asp-controller="Favorites" asp-route-id="@p.Id">
+            <button>
+                Remove Favorite
+            </button>
+        </a>
+        <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.Name">
+            <button>
+                See More!
+            </button>
+        </a>
+        <hr />
     }
-    else
-    {
-        <h2>Viewing your favorite Pokemon:</h2>
-        @foreach (FavPokemon p in Model)
-        {
-            <img src=@p.Image />
-            <p>Name: @p.Name</p>
-            <p>Type(s): @p.Type1@p.Type2</p>
-            <br />
-            <a asp-action="Delete" asp-controller="Favorites" asp-route-id="@p.Id"><button>Remove Favorite</button></a>
-            <hr />
-        }
-    }
-</body>
+}

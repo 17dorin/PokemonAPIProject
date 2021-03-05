@@ -42,6 +42,7 @@ namespace PokemonAPIProject.Controllers
             favPokemon.Image = p.sprites.front_default;
 
             favPokemon.Type1 = p.types[0].type.name;
+
             if (p.types.Length < 2)
             {
                 favPokemon.Type2 = "";
@@ -52,14 +53,27 @@ namespace PokemonAPIProject.Controllers
             }
 
             string url = $@"https://pokeapi.co/api/v2/pokemon/{pokemon}/";
-            favPokemon.Name = pokemon;
-            favPokemon.Url = url;
 
-            favPokemon.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            _PokemonDB.FavPokemons.Add(favPokemon);
-            _PokemonDB.SaveChanges();
+            List<FavPokemon> favPokeList = _PokemonDB.FavPokemons.Where(x => x.UserId == User.FindFirst(ClaimTypes.NameIdentifier).Value).ToList();
 
-            return RedirectToAction("Index");
+            if (favPokeList.Any(x => pokemon == x.Name))
+            {
+                TempData["error"] = "This pokemon is already in your favorites";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                favPokemon.Name = pokemon;
+                favPokemon.Url = url;
+                favPokemon.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+                TempData.Remove("error");
+                _PokemonDB.FavPokemons.Add(favPokemon);
+                _PokemonDB.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
         }
 
         public IActionResult Delete(int id)
