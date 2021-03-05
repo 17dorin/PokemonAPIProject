@@ -7,7 +7,12 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
-
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -25,6 +30,7 @@ a {
     margin: 20px;
     padding: 20px;
     align-content: center;
+    font-size: large;
 }
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
@@ -77,6 +83,7 @@ body {
     margin: 20px;
     padding: 20px;
     align-content: center;
+    text-align:center;
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }

@@ -1,70 +1,79 @@
 @model PokemonRoot
 
-    <div class="city">
-        <h2>@Model.name</h2>
-        <br />
-        <img src=@Model.sprites.other.dream_world.front_default />
-        <br />
+<div class="city">
+    <h2 align="center">@Model.name</h2>
+    <br />
+    <img src=@Model.sprites.other.dream_world.front_default class="center"/>
+    <br />
 
-        <img src=@Model.sprites.front_default />
-        <img src=@Model.sprites.back_default />
-        <img src=@Model.sprites.front_shiny />
-        <img src=@Model.sprites.back_shiny />
-        <img src=@Model.sprites.front_female />
-        <img src=@Model.sprites.back_female />
-        <img src=@Model.sprites.front_shiny_female />
-        <img src=@Model.sprites.back_shiny_female />
-        <br />
+    <img src=@Model.sprites.front_default />
+    <img src=@Model.sprites.back_default />
+    <img src=@Model.sprites.front_shiny />
+    <img src=@Model.sprites.back_shiny />
+    <img src=@Model.sprites.front_female />
+    <img src=@Model.sprites.back_female />
+    <img src=@Model.sprites.front_shiny_female />
+    <img src=@Model.sprites.back_shiny_female />
+    <br />
+</div>
 
-        <ul>
-            <h2>Stats</h2>
-            @for (int i = 0; i < 5; i++)
-            {
-                <li>@Model.stats[i].stat.name : @Model.stats[i].base_stat</li>
-            }
-            <li>height: @((double)Model.height/10) meters</li>
-            <li>weight: @((double)Model.weight/10) kg</li>
-        </ul>
-        <br />
-    </div>
-
-
-<label for="base-moves">Moves learned at level 1:</label>
-<ul id="base-moves">
-    @if (Model.moves.Count() != 0)
-    {
-        foreach (Move m in Model.moves)
+<div class="city">
+    <table align="center">
+        <tr>
+            <h2 align="center">Stats</h2>
+        </tr>
+        @for (int i = 0; i < 5; i++)
         {
-            bool baseMove = false;
-            foreach (Version_Group_Details v in m.version_group_details)
+            <tr>
+                <td>@Model.stats[i].stat.name : @Model.stats[i].base_stat</td>
+            </tr>
+        }
+        <tr>
+            <td>height: @((double)Model.height/10) meters</td>
+        </tr>
+        <tr>
+            <td>weight: @((double)Model.weight/10) kg</td>
+        </tr>
+    </table>
+    <br />
+</div>
+
+<div class="city">
+    <table id="base-moves" align="center">
+        <tr>
+            <h2 align="center">Moves learned at level 1:</h2>
+        </tr>
+        @if (Model.moves.Count() != 0)
+        {
+            foreach (Move m in Model.moves)
             {
-                if (v.level_learned_at == 1)
+                bool baseMove = false;
+                foreach (Version_Group_Details v in m.version_group_details)
                 {
-                    baseMove = true;
+                    if (v.level_learned_at == 1)
+                    {
+                        baseMove = true;
+                    }
+                }
+
+                if (baseMove)
+                {
+                    <tr>
+                        <td>@m.move.name</td>
+                    </tr>
                 }
             }
-
-            if (baseMove)
-            {
-                <li>@m.move.name</li>
-            }
         }
-    }
-    else
-    {
-        <li>No move data to display</li>
-    }
-
-</ul>
-<ul>
-    <h2>Stats</h2>
-    @for (int i = 0; i < 5; i++)
-    {
-        <li>@Model.stats[i].stat.name : @Model.stats[i].base_stat</li>
-    }
-    <li>height: @((double)Model.height / 10) meters</li>
-    <li>weight: @((double)Model.weight / 10) kg</li>
-</ul>
-<br />
-<a asp-action="Add" asp-controller="Favorites" asp-route-pokemon="@Model.name">Add this Pokemon to your Deck! </a>
+        else
+        {
+            <tr>
+                <td>No move data to display</td>
+            </tr>
+        }
+    </table>
+</div>
+    <br />
+    <button class="center">
+        <a asp-action="Add" asp-controller="Favorites" asp-route-pokemon="@Model.name">Add this Pokemon to your Deck! </a>
+    </button>
 
