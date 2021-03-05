@@ -20,6 +20,30 @@
 <div class="city">
     <table align="center">
         <tr>
+            @if (Model.types.Length == 1)
+            {
+                <h2 align="center">Type:</h2>
+            }
+            else
+            {
+                <h2 align="center">Types:</h2>
+            }
+        </tr>
+        <tr>
+            <td>@Model.types[0].type.name</td>
+        </tr>
+        @if (Model.types.Length > 1)
+        {
+            <tr>
+                <td>@Model.types[1].type.name</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="city">
+    <table align="center">
+        <tr>
             <h2 align="center">Stats</h2>
         </tr>
         @for (int i = 0; i < 6; i++)
