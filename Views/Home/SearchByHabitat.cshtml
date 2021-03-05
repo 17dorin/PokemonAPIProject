@@ -1,15 +1,14 @@
 ﻿@model List<Pokemon_Species>
 
 <h2>Pokemon that reside in @TempData["habitatName"]:</h2>
-<ul>
+<ul style=" list-style-position: inside; display: inline-block; text-align: left;">
     @foreach (Pokemon_Species p in Model)
     {
-        <li>@p.name</li>
-        <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
-            <button>
-                See More!
-            </button>
-        </a>
+        <li>
+            <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
+                @p.name
+            </a>
+        </li>
     }
 </ul>
 

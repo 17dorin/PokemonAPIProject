@@ -2,18 +2,15 @@
 
 <h2>All Pokemon with the @TempData.Peek("typeName") type!</h2>
 
-<ul>
+<ul style=" list-style-position: inside; display: inline-block; text-align: left;">
     @foreach (Pokemon p in Model)
     {
-        <li>@p.pokemon.name
+        <li>
             <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.pokemon.name">
-                <button>
-                    See More!
-                </button>
+                @p.pokemon.name
             </a>
         </li>
-    <br />
-    }
+      }
 </ul>
 
 <ul class="pagination">

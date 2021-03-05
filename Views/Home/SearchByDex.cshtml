@@ -2,16 +2,15 @@
 
 <h2>Pokemon in @TempData.Peek("dexName"):</h2>
 
-<ul>
+<ul style=" list-style-position: inside; display: inline-block; text-align: left;">
     @foreach (Pokemon_Entries p in Model)
     {
-        <li>@p.pokemon_species.name</li>
-        <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.pokemon_species.name">
-            <button>
-                See More!
-            </button>
-        </a>
-    }
+        <li>
+            <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.pokemon_species.name">
+                 @p.pokemon_species.name
+            </a>
+        </li>
+}
 </ul>
 
 <ul class="pagination">
