@@ -153,7 +153,7 @@ namespace PokemonAPIProject.Models
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.FavPokemons)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Pokemon__UserId__4BAC3F29");
+                    .HasConstraintName("FK__Pokemon__UserId__5CD6CB2B");
             });
 
             OnModelCreatingPartial(modelBuilder);

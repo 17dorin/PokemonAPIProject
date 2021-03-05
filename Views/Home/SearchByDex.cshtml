@@ -1,9 +1,9 @@
-﻿@model PokedexRoot
+﻿@model List<Pokemon_Entries>
 
-<h2>Pokemon in @Model.name</h2>
+<h2>Pokemon in @TempData.Peek("dexName"):</h2>
 
 <ul>
-    @foreach (Pokemon_Entries p in Model.pokemon_entries)
+    @foreach (Pokemon_Entries p in Model)
     {
         <li>@p.pokemon_species.name</li>
         <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.pokemon_species.name">
@@ -11,6 +11,21 @@
                 See More!
             </button>
         </a>
+    }
+</ul>
+
+<ul class="pagination">
+    @if (int.Parse(TempData.Peek("pageNumber").ToString()) != 1)
+    {
+        <li>
+            <a asp-action="SearchByDex" asp-controller="Home" asp-route-dex="@TempData["dexName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) - 1)">[Previous]</a>
+        </li>
+    }
+    @if (Model.Count() == int.Parse(TempData.Peek("pageSize").ToString()))
+    {
+        <li>
+            <a asp-action="SearchByDex" asp-controller="Home" asp-route-dex="@TempData["dexName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) + 1)">[Next]</a>
+        </li>
     }
 </ul>
 

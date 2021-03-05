@@ -1,8 +1,8 @@
-﻿@model HabitatRoot
+﻿@model List<Pokemon_Species>
 
 <h2>Pokemon that reside in @TempData["habitatName"]:</h2>
 <ul>
-    @foreach (Pokemon_Species p in Model.pokemon_species)
+    @foreach (Pokemon_Species p in Model)
     {
         <li>@p.name</li>
         <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
@@ -10,5 +10,20 @@
                 See More!
             </button>
         </a>
+    }
+</ul>
+
+<ul class="pagination">
+    @if (int.Parse(TempData.Peek("pageNumber").ToString()) != 1)
+    {
+        <li>
+            <a asp-action="SearchByHabitat" asp-controller="Home" asp-route-habitat="@TempData["habitatName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) - 1)">[Previous]</a>
+        </li>
+    }
+    @if (Model.Count() == int.Parse(TempData.Peek("pageSize").ToString()))
+    {
+        <li>
+            <a asp-action="SearchByHabitat" asp-controller="Home" asp-route-habitat="@TempData["habitatName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) + 1)">[Next]</a>
+        </li>
     }
 </ul>

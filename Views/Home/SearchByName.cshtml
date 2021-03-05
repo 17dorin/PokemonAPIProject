@@ -17,22 +17,30 @@
 
 <label for="base-moves">Moves learned at level 1:</label>
 <ul id="base-moves">
-    @foreach (Move m in Model.moves)
+    @if (Model.moves.Count() != 0)
     {
-        bool baseMove = false;
-        foreach (Version_Group_Details v in m.version_group_details)
+        foreach (Move m in Model.moves)
         {
-            if (v.level_learned_at == 1)
+            bool baseMove = false;
+            foreach (Version_Group_Details v in m.version_group_details)
             {
-                baseMove = true;
+                if (v.level_learned_at == 1)
+                {
+                    baseMove = true;
+                }
+            }
+
+            if (baseMove)
+            {
+                <li>@m.move.name</li>
             }
         }
-
-        if (baseMove)
-        {
-            <li>@m.move.name</li>
-        }
     }
+    else
+    {
+        <li>No move data to display</li>
+    }
+
 </ul>
 <ul>
     <h2>Stats</h2>

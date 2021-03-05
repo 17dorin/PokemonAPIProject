@@ -16,10 +16,14 @@
 <ul class="pagination">
     @if (int.Parse(TempData.Peek("pageNumber").ToString()) != 1)
     {
-    <li><a asp-action="SearchByMove" asp-controller="Home" asp-route-move="@TempData["moveName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) - 1)">[Previous]</a></li>
+        <li>
+            <a asp-action="SearchByMove" asp-controller="Home" asp-route-move="@TempData["moveName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) - 1)">[Previous]</a>
+        </li>
     }
-<li>
-    <a asp-action="SearchByMove" asp-controller="Home" asp-route-move="@TempData["moveName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) + 1)">[Next]</a>
-</li>
-    
+    @if (Model.Count() == int.Parse(TempData.Peek("pageSize").ToString()))
+    {
+        <li>
+            <a asp-action="SearchByMove" asp-controller="Home" asp-route-move="@TempData["moveName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) + 1)">[Next]</a>
+        </li>
+    }
 </ul>

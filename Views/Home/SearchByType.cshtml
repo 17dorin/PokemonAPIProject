@@ -1,17 +1,32 @@
 ﻿@model List<Pokemon>
 
-<h2>All Pokemon with the @TempData.Peek("type") type!</h2>
+<h2>All Pokemon with the @TempData.Peek("typeName") type!</h2>
 
 <ul>
     @foreach (Pokemon p in Model)
     {
-    <li>@p.pokemon.name
-        <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.pokemon.name">
-            <button>
-                See More!
-            </button>
-        </a>
-    </li>
+        <li>@p.pokemon.name
+            <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.pokemon.name">
+                <button>
+                    See More!
+                </button>
+            </a>
+        </li>
     <br />
+    }
+</ul>
+
+<ul class="pagination">
+    @if (int.Parse(TempData.Peek("pageNumber").ToString()) != 1)
+    {
+        <li>
+            <a asp-action="SearchByType" asp-controller="Home" asp-route-type="@TempData["typeName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) - 1)">[Previous]</a>
+        </li>
+    }
+    @if (Model.Count() == int.Parse(TempData.Peek("pageSize").ToString()))
+    {
+        <li>
+            <a asp-action="SearchByType" asp-controller="Home" asp-route-type="@TempData["typeName"]" asp-route-pageNumber="@(int.Parse(TempData.Peek("pageNumber").ToString()) + 1)">[Next]</a>
+        </li>
     }
 </ul>
