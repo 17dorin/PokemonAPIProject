@@ -1,7 +1,8 @@
 @model PokemonRoot
+@using PokemonAPIProject.Helpers;
 
 <div class="city">
-    <h2 align="center">@Model.name</h2>
+    <h2 align="center">@TextCleaner.Clean(Model.name)</h2>
     <br />
     <img src=@Model.sprites.other.dream_world.front_default class="center"/>
     <br />
@@ -30,12 +31,12 @@
             }
         </tr>
         <tr>
-            <td>@Model.types[0].type.name</td>
+            <td>@TextCleaner.Clean(Model.types[0].type.name)</td>
         </tr>
         @if (Model.types.Length > 1)
         {
             <tr>
-                <td>@Model.types[1].type.name</td>
+                <td>@TextCleaner.Clean(Model.types[1].type.name)</td>
             </tr>
         }
     </table>
@@ -49,14 +50,14 @@
         @for (int i = 0; i < 6; i++)
         {
             <tr>
-                <td>@Model.stats[i].stat.name : @Model.stats[i].base_stat</td>
+                <td>@TextCleaner.Clean(Model.stats[i].stat.name) : @Model.stats[i].base_stat</td>
             </tr>
         }
         <tr>
-            <td>height: @((double)Model.height/10) meters</td>
+            <td>Height: @((double)Model.height/10) meters</td>
         </tr>
         <tr>
-            <td>weight: @((double)Model.weight/10) kg</td>
+            <td>Weight: @((double)Model.weight/10) kg</td>
         </tr>
     </table>
 </div>
@@ -105,7 +106,7 @@
                 if (baseMove)
                 {
                     <tr>
-                        <td>@m.move.name</td>
+                        <td>@TextCleaner.Clean(m.move.name)</td>
                     </tr>
                 }
             }

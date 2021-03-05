@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PokemonAPIProject.Models;
+using PokemonAPIProject.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,8 +21,9 @@ namespace PokemonAPIProject.Controllers
         }
         public IActionResult SearchByName(string pokemon)
         {
-            PokemonRoot p = new PokemonRoot();
-            string poke = pokemon.Trim().ToLower();
+            string poke = TextCleaner.NormalInput(pokemon);
+            PokemonRoot p = pk.GetPokemon(poke);
+            
             try
             {
                 p = pk.GetPokemon(poke);
@@ -34,15 +36,17 @@ namespace PokemonAPIProject.Controllers
 
             TempData.Remove("moveerror");
             TempData.Remove("error");
+
             return View(p);
         }
 
         public IActionResult SearchByType(string type, [FromQuery]int pageNumber = 1, [FromQuery]int pageSize = 10)
         {
+            string t = TextCleaner.NormalInput(type);
+
             TempData.Remove("error");
             TempData.Remove("moveerror");
 
-            string t = type.Trim().ToLower();
             TempData["typeName"] = t;
             List<Pokemon> pokemon = pk.GetType(t);
 
@@ -57,7 +61,7 @@ namespace PokemonAPIProject.Controllers
         public IActionResult SearchByMove(string move, [FromQuery]int pageNumber = 1, [FromQuery]int pageSize = 10)
         {
             //Normalizes search string
-            string search = move.Trim().ToLower();
+            string search = TextCleaner.NormalInput(move);
             TempData["moveName"] = search;
 
             //Deserializes move object

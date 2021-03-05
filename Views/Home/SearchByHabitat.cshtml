@@ -1,13 +1,14 @@
 ﻿@model List<Pokemon_Species>
+@using PokemonAPIProject.Helpers;
 
-<h2>Pokemon that reside in @TempData["habitatName"]:</h2>
-<ul style=" list-style-position: inside; display: inline-block; text-align: left;">
+<h2>Pokemon that reside in @TextCleaner.Clean(TempData["habitatName"].ToString()):</h2>
+<ul>
     @foreach (Pokemon_Species p in Model)
     {
         <li>
-            <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
-                @p.name
-            </a>
+        <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
+            @TextCleaner.Clean(p.name)
+        </a>
         </li>
     }
 </ul>

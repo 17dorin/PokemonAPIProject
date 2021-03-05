@@ -1,16 +1,17 @@
 ﻿@model List<Pokemon_Entries>
+@using PokemonAPIProject.Helpers;
 
-<h2>Pokemon in @TempData.Peek("dexName"):</h2>
+<h2>Pokemon in @TextCleaner.Clean(TempData.Peek("dexName").ToString()):</h2>
 
 <ul style=" list-style-position: inside; display: inline-block; text-align: left;">
     @foreach (Pokemon_Entries p in Model)
     {
         <li>
-            <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.pokemon_species.name">
-                 @p.pokemon_species.name
-            </a>
+          <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.pokemon_species.name">
+              @TextCleaner.Clean(p.pokemon_species.name)
+          </a>
         </li>
-}
+    }
 </ul>
 
 <ul class="pagination">
