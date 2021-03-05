@@ -22,8 +22,15 @@ namespace PokemonAPIProject.Controllers
         public IActionResult SearchByName(string pokemon)
         {
             string poke = TextCleaner.NormalInput(pokemon);
-            PokemonRoot p = pk.GetPokemon(poke);
+            PokemonRoot p = new PokemonRoot();
             
+            if(poke == null)
+            {
+                TempData["error"] = "Please enter a valid entry";
+                return RedirectToAction("Index");
+            }
+
+
             try
             {
                 p = pk.GetPokemon(poke);
@@ -63,6 +70,13 @@ namespace PokemonAPIProject.Controllers
             //Normalizes search string
             string search = TextCleaner.NormalInput(move);
             TempData["moveName"] = search;
+
+            if (search == null)
+            {
+                TempData["error"] = "Please enter a valid entry";
+                return RedirectToAction("Index");
+            }
+
 
             //Deserializes move object
             MoveRoot m = new MoveRoot();
