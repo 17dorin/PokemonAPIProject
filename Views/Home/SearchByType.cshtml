@@ -1,15 +1,14 @@
 ﻿@model List<Pokemon>
+@using PokemonAPIProject.Helpers; 
 
-<h2>All Pokemon with the @TempData.Peek("typeName") type!</h2>
+<h2>All Pokemon with the @TextCleaner.Clean(TempData.Peek("typeName").ToString()) type!</h2>
 
 <ul>
     @foreach (Pokemon p in Model)
     {
-        <li>@p.pokemon.name
+        <li>
             <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.pokemon.name">
-                <button>
-                    See More!
-                </button>
+                @TextCleaner.Clean(p.pokemon.name)
             </a>
         </li>
     <br />

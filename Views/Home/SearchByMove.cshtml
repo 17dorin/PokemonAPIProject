@@ -1,10 +1,11 @@
 ﻿@model List<Learned_By_Pokemon>
+@using PokemonAPIProject.Helpers;
 
-<h2>Pokemon that can learn @TempData.Peek("moveName"):</h2>
+<h2>Pokemon that can learn @TextCleaner.Clean(TempData.Peek("moveName").ToString()):</h2>
 <ul>
     @foreach(Learned_By_Pokemon p in Model)
     {
-        <li>@p.name</li>
+        <li>@TextCleaner.Clean(p.name)</li>
         <a asp-action="SearchByName" asp-controller="Home" asp-route-pokemon="@p.name">
             <button>
                 See More!
